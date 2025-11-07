@@ -1,0 +1,185 @@
+# Learn more about configuring your checkout UI extension:
+# https://shopify.dev/docs/api/checkout-ui-extensions/latest/configuration
+
+# The version of APIs your extension will receive. Learn more:
+# https://shopify.dev/docs/api/usage/versioning
+api_version = "2025-10"
+
+[[extensions]]
+name = "Banner Inline"
+handle = "banner-inline"
+type = "ui_extension"
+uid = "8568e926-533e-08a7-9795-3242437db4a3cf26ad2b"
+
+# Controls where in Shopify your extension will be injected,
+# and the file that contains your extension’s source code. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/latest/extension-targets-overview
+
+[[extensions.targeting]]
+module = "./src/Checkout.tsx"
+target = "purchase.checkout.block.render"
+
+[[extensions.targeting]]
+module = "./src/Header.tsx"
+target = "purchase.checkout.header.render-after"
+
+[extensions.capabilities]
+# Gives your extension access to directly query Shopify’s storefront API.
+# https://shopify.dev/docs/api/checkout-ui-extensions/latest/configuration#api-access
+api_access = true
+
+# Gives your extension access to make external network calls, using the
+# JavaScript `fetch()` API. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/latest/configuration#network-access
+# network_access = true
+
+# Loads metafields on checkout resources, including the cart,
+# products, customers, and more. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/latest/configuration#metafields
+
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_key"
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_other_key"
+
+# Defines settings that will be collected from merchants installing
+# your extension. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/latest/configuration#settings-definition
+
+[extensions.settings]
+# Icon Source
+[[extensions.settings.fields]]
+key = "icon_source"
+type = "single_line_text_field"
+name = "Icon URL"
+description = "Optional icon image URL"
+
+# Icon Width
+[[extensions.settings.fields]]
+key = "icon_width"
+type = "number_integer"
+name = "Icon Width (px)"
+description = "Icon width in pixels"
+default = 80
+[[extensions.settings.fields.validations]]
+name = "min"
+value = "10"
+
+# Text Block
+[[extensions.settings.fields]]
+key = "text_block"
+type = "multi_line_text_field"
+name = "Text Block"
+description = "Enter text with HTML-like tags: <i>italic</i>, <strong>bold</strong>, <span>critical color</span>"
+
+# Text Block 2
+[[extensions.settings.fields]]
+key = "text_block_2"
+type = "multi_line_text_field"
+name = "Text Block 2"
+description = "Optional second text block. If provided, timer will appear after this block instead of Text Block 1"
+
+# Timer
+[[extensions.settings.fields]]
+key = "timer_time"
+type = "number_integer"
+name = "Timer Time (seconds)"
+description = "Enter timer duration in seconds (e.g., 900 for 15:00)"
+default = 900
+[[extensions.settings.fields.validations]]
+name = "min"
+value = "0"
+
+# Banner Alignment - Horizontal
+[[extensions.settings.fields]]
+key = "banner_align_horizontal"
+type = "single_line_text_field"
+name = "Horizontal Alignment"
+description = "Choose the horizontal alignment of the banner"
+default = "center"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["start", "center", "end"]'
+
+# Banner Alignment - Vertical
+[[extensions.settings.fields]]
+key = "banner_align_vertical"
+type = "single_line_text_field"
+name = "Vertical Alignment"
+description = "Choose the vertical alignment of the banner"
+default = "center"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["start", "center", "end"]'
+
+# Text Color
+[[extensions.settings.fields]]
+key = "text_color"
+type = "single_line_text_field"
+name = "Text Color"
+default = "base"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["base", "subdued", "accent", "info", "success", "warning", "critical"]'
+
+# Background Color
+[[extensions.settings.fields]]
+key = "background_color"
+type = "single_line_text_field"
+name = "Background Color"
+default = "base"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["transparent", "base", "subdued"]'
+
+# Border Style
+[[extensions.settings.fields]]
+key = "border_style"
+type = "single_line_text_field"
+name = "Border Style"
+default = "base"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["none", "base", "dashed", "dotted"]'
+
+# Border Width
+[[extensions.settings.fields]]
+key = "border_width"
+type = "single_line_text_field"
+name = "Border Width"
+default = "base"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["none", "base", "large", "large-100", "large-200"]'
+
+# Border Radius
+[[extensions.settings.fields]]
+key = "border_radius"
+type = "single_line_text_field"
+name = "Border Radius"
+default = "base"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["none", "base", "large", "fullyRounded"]'
+
+# Padding Block
+[[extensions.settings.fields]]
+key = "padding_block"
+type = "single_line_text_field"
+name = "Padding Block"
+default = "base"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["none", "extraTight", "tight", "base", "loose", "extraLoose"]'
+
+# Padding Inline
+[[extensions.settings.fields]]
+key = "padding_inline"
+type = "single_line_text_field"
+name = "Padding Inline"
+default = "base"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["none", "extraTight", "tight", "base", "loose", "extraLoose"]'
