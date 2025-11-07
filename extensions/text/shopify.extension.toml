@@ -1,0 +1,108 @@
+# Learn more about configuring your checkout UI extension:
+# https://shopify.dev/api/checkout-extensions/checkout/configuration
+
+# The version of APIs your extension will receive. Learn more:
+# https://shopify.dev/docs/api/usage/versioning
+api_version = "2025-07"
+
+[[extensions]]
+name = "Text"
+handle = "text"
+
+uid = "fea22a2b-e24e-1d5d-74c5-974434508b30d8c42491"
+
+type = "ui_extension"
+
+
+# Controls where in Shopify your extension will be injected,
+# and the file that contains your extension’s source code. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+
+[[extensions.targeting]]
+module = "./src/Checkout.tsx"
+target = "purchase.checkout.block.render"
+
+[extensions.capabilities]
+# Gives your extension access to directly query Shopify’s storefront API.
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#api-access
+api_access = true
+
+# Gives your extension access to make external network calls, using the
+# JavaScript `fetch()` API. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#network-access
+# network_access = true
+
+# Loads metafields on checkout resources, including the cart,
+# products, customers, and more. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#metafields
+
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_key"
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_other_key"
+
+# Defines settings that will be collected from merchants installing
+# your extension. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
+
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "text_block"
+type = "multi_line_text_field"
+name = "Text Block"
+
+[[extensions.settings.fields]]
+key = "text"
+type = "single_line_text_field"
+name = "Text"
+description = "This will be hidden if Text Block is not empty"
+
+[[extensions.settings.fields]]
+key = "text_style"
+type = "single_line_text_field"
+name = "Text Style"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["normal", "italic", "bold"]'
+
+[[extensions.settings.fields]]
+key = "text_align"
+type = "single_line_text_field"
+name = "Text Alignment"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["start", "center", "end"]'
+
+[[extensions.settings.fields]]
+key = "text_size"
+type = "single_line_text_field"
+name = "Text Size"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["extraSmall", "small", "base", "medium", "large", "extraLarge"]'
+
+[[extensions.settings.fields]]
+key = "text_appearance"
+type = "single_line_text_field" 
+name = "Text Appearance"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["normal", "accent", "subdued", "info", "success", "warning", "critical", "decorative"]'
+
+[[extensions.settings.fields]]
+key = "padding_block"
+type = "single_line_text_field"
+name = "Padding Block"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["none", "extraTight", "tight", "base", "loose", "extraLoose"]'
+
+[[extensions.settings.fields]]
+key = "padding_inline" 
+type = "single_line_text_field"
+name = "Padding Inline"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["none", "extraTight", "tight", "base", "loose", "extraLoose"]'

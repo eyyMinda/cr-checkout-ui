@@ -1,0 +1,1 @@
+export const CHECKOUT_SCREEN_BREAKPOINT = 1015;

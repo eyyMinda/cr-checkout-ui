@@ -1,0 +1,184 @@
+# Learn more about configuring your checkout UI extension:
+# https://shopify.dev/api/checkout-extensions/checkout/configuration
+
+# The version of APIs your extension will receive. Learn more:
+# https://shopify.dev/docs/api/usage/versioning
+api_version = "2025-07"
+
+[[extensions]]
+name = "Reviews"
+handle = "reviews"
+
+uid = "215866af-0d9c-449a-9277-0c1a538fb105bedc6e28"
+
+type = "ui_extension"
+
+
+# Controls where in Shopify your extension will be injected,
+# and the file that contains your extension’s source code. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+
+[[extensions.targeting]]
+module = "./src/Checkout.tsx"
+target = "purchase.checkout.block.render"
+
+[extensions.capabilities]
+# Gives your extension access to directly query Shopify’s storefront API.
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#api-access
+api_access = true
+
+# Gives your extension access to make external network calls, using the
+# JavaScript `fetch()` API. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#network-access
+# network_access = true
+
+# Loads metafields on checkout resources, including the cart,
+# products, customers, and more. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#metafields
+
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_key"
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_other_key"
+
+# Defines settings that will be collected from merchants installing
+# your extension. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
+
+[extensions.settings]
+# --------------- Scroll Wrapper ----------------
+[[extensions.settings.fields]]
+key = "maxBlockSize"
+type = "number_integer"
+name = "Container Max Height"
+[[extensions.settings.fields.validations]]
+name = "min"
+value = "100"
+[[extensions.settings.fields.validations]]
+name = "max"
+value = "500"
+
+[[extensions.settings.fields]]
+key = "spacer"
+type = "single_line_text_field"
+name = "Spacing Between Reviews"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["extraTight", "tight", "base", "loose", "extraLoose"]'
+
+# --------------- Review ----------------
+[[extensions.settings.fields]]
+key = "minInlineSize"
+type = "number_integer"
+name = "Review Width"
+[[extensions.settings.fields.validations]]
+name = "min"
+value = "100"
+[[extensions.settings.fields.validations]]
+name = "max"
+value = "500"
+
+[[extensions.settings.fields]]
+key = "spacing"
+type = "single_line_text_field"
+name = "Review Vertical Spacing"
+description = "Vertical spacing between review header and review text"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["none", "extraTight", "tight", "base", "loose", "extraLoose"]'
+
+[[extensions.settings.fields]]
+key = "background"
+type = "single_line_text_field"
+name = "Review Background"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["transparent", "base", "subdued"]'
+
+[[extensions.settings.fields]]
+key = "border"
+type = "single_line_text_field"
+name = "Review Border"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["none", "base", "dashed", "dotted"]'
+
+[[extensions.settings.fields]]
+key = "borderRadius"
+type = "single_line_text_field"
+name = "Review Border Radius"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["none", "small", "base", "large", "fullyRounded"]'
+
+# --------------- Padding ----------------
+[[extensions.settings.fields]]
+key = "padding_block"
+type = "single_line_text_field"
+name = "Padding Block"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["none", "extraTight", "tight", "base", "loose", "extraLoose"]'
+
+[[extensions.settings.fields]]
+key = "padding_inline"
+type = "single_line_text_field"
+name = "Padding Inline"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["none", "extraTight", "tight", "base", "loose", "extraLoose"]'
+
+# --------------- Extra ----------------
+[[extensions.settings.fields]]
+key = "stars"
+type = "single_line_text_field"
+name = "Stars Image URL"
+
+[[extensions.settings.fields]]
+key = "verified"
+type = "single_line_text_field"
+name = "Verified Image URL"
+
+# --------------- Reviews ----------------
+[[extensions.settings.fields]]
+key = "author_source_1"
+type = "single_line_text_field"
+name = "Author Image URL"
+[[extensions.settings.fields]]
+key = "author_1"
+type = "single_line_text_field"
+name = "Author Name"
+[[extensions.settings.fields]]
+key = "text_1"
+type = "multi_line_text_field"
+name = "Review Text"
+
+
+[[extensions.settings.fields]]
+key = "author_source_2"
+type = "single_line_text_field"
+name = "Author Image URL 2"
+[[extensions.settings.fields]]
+key = "author_2"
+type = "single_line_text_field"
+name = "Author Name 2"
+[[extensions.settings.fields]]
+key = "text_2"
+type = "multi_line_text_field"
+name = "Review Text 2"
+
+
+[[extensions.settings.fields]]
+key = "author_source_3"
+type = "single_line_text_field"
+name = "Author Image URL 3"
+[[extensions.settings.fields]]
+key = "author_3"
+type = "single_line_text_field"
+name = "Author Name 3"
+[[extensions.settings.fields]]
+key = "text_3"
+type = "multi_line_text_field"
+name = "Review Text 3"
